@@ -3,11 +3,12 @@
  */
 import {connect} from 'react-redux'
 import Main from '../components/Main'
-import {dispatchcambiar} from '../actions/App'
+import {dispatchcambiar, loadConsultors} from '../actions/App'
 
 const mapStateToProps = (state)=>{
     return {
-        logout: state.app.logout
+        isLoading: state.app.isLoading,
+        consultors: state.app.consultors
     }
 }
 
@@ -15,6 +16,9 @@ const mapDispatchToProps = (dispatch)=>{
     return {
         cambiar: (estado)=>{
             dispatch(dispatchcambiar(estado))
+        },
+        loadConsultors: () => {
+        	dispatch(loadConsultors());
         }
     }
 }

@@ -3,12 +3,15 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const path = require('path')
+const cors = require('cors');
 
 const config = require('./webpack/webpack.dev.config')
 
 const app = express()
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use(cors());
 //app.use(express.bodyParser())
 
 const compiler = webpack(config)
